@@ -36,12 +36,15 @@
 //
 // Limit Switches
 //
-#define X_MIN_PIN          P1_29
-#define X_MAX_PIN          P1_28
-#define Y_MIN_PIN          P1_27
-#define Y_MAX_PIN          P1_26
-#define Z_MIN_PIN          P1_25
-#define Z_MAX_PIN          P1_24
+//#define X_MIN_PIN          P1_29
+//#define X_MAX_PIN          P1_28
+#define X_MAX_PIN          P1_29
+//#define Y_MIN_PIN          P1_27
+//#define Y_MAX_PIN          P1_26
+#define Y_MAX_PIN          P1_27
+//#define Z_MIN_PIN          P1_25
+//#define Z_MAX_PIN          P1_24
+#define Z_MAX_PIN          P1_25
 
 //
 // Z Probe (when not Z_MIN_PIN)
@@ -51,49 +54,42 @@
 #endif
 
 //
-// Filament Runout Sensor
-//
-#ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN   P1_28
-#endif
-
-//
 // Steppers
 //
 #define X_STEP_PIN         P2_02
 #define X_DIR_PIN          P2_06
 #define X_ENABLE_PIN       P2_01
-#ifndef X_CS_PIN
-  #define X_CS_PIN         P1_17
-#endif
+//#ifndef X_CS_PIN
+//  #define X_CS_PIN         P1_17
+//#endif
 
 #define Y_STEP_PIN         P0_19
 #define Y_DIR_PIN          P0_20
 #define Y_ENABLE_PIN       P2_08
-#ifndef Y_CS_PIN
-  #define Y_CS_PIN         P1_15
-#endif
+//#ifndef Y_CS_PIN
+//  #define Y_CS_PIN         P1_15
+//#endif
 
 #define Z_STEP_PIN         P0_22
 #define Z_DIR_PIN          P2_11
 #define Z_ENABLE_PIN       P0_21
-#ifndef Z_CS_PIN
-  #define Z_CS_PIN         P1_10
-#endif
+//#ifndef Z_CS_PIN
+//  #define Z_CS_PIN         P1_10
+//#endif
 
 #define E0_STEP_PIN        P2_13
 #define E0_DIR_PIN         P0_11
 #define E0_ENABLE_PIN      P2_12
-#ifndef E0_CS_PIN
-  #define E0_CS_PIN        P1_08
-#endif
+//#ifndef E0_CS_PIN
+//  #define E0_CS_PIN        P1_08
+//#endif
 
 #define E1_STEP_PIN        P0_01
 #define E1_DIR_PIN         P0_00
 #define E1_ENABLE_PIN      P0_10
-#ifndef E1_CS_PIN
-  #define E1_CS_PIN        P1_01
-#endif
+//#ifndef E1_CS_PIN
+//  #define E1_CS_PIN        P1_01
+//#endif
 
 //
 // Software SPI pins for TMC2130 stepper drivers
@@ -134,16 +130,13 @@
 
   #define Z_SERIAL_TX_PIN  P1_14
   #define Z_SERIAL_RX_PIN  P1_10
+  
 
   #define E0_SERIAL_TX_PIN P1_09
   #define E0_SERIAL_RX_PIN P1_08
 
   #define E1_SERIAL_TX_PIN P1_04
-  #define E1_SERIAL_RX_PIN P1_01
-
-  #define Z2_SERIAL_TX_PIN P1_04
-  #define Z2_SERIAL_RX_PIN P1_01
-
+  #define E1_SERIAL_RX_PIN P1_01  
 #endif
 
 //
@@ -159,11 +152,12 @@
 //
 #define HEATER_0_PIN       P2_07
 #if HOTENDS == 1
-  #define FAN1_PIN         P2_04
+  //#define FAN1_PIN         P2_04
+  //#define HEATER_1_PIN     P2_04
 #else
-  #define HEATER_1_PIN     P2_04
+  //#define HEATER_1_PIN     P2_04
 #endif
-#define FAN_PIN            P2_03
+#define FAN_PIN            P2_04
 #define HEATER_BED_PIN     P2_05
 
 /*
@@ -173,49 +167,46 @@
 |   (MOSI)0.18 | · · | 3.25(BTN_EN2)               (LCD_D5) 1.21 | · · | 1.20 (LCD_D4)
 |  (SD_SS)0.16 | · · | 3.26(BTN_EN1)               (LCD_RS) 1.19 | · · | 1.18 (LCD_EN)
 |    (SCK)0.15 | · · | 0.17(MISO)                 (BTN_ENC) 0.28 | · · | 1.30 (BEEPER)
-|               ￣￣                                               ￣￣
-|               EXP2                                              EXP1
+|               ￣￣                                               ￣￣  
+|               EXP2                                              EXP1  
 */
 #if ENABLED(ULTRA_LCD)
-  #define BEEPER_PIN        P1_30   // (37) not 5V tolerant
-  #define BTN_ENC           P0_28   // (58) open-drain
+  #define BEEPER_PIN       P1_30   // (37) not 5V tolerant
+  #define BTN_ENC          P0_28   // (58) open-drain
+  #define LCD_PINS_RS      P1_19
 
-  #if ENABLED(CR10_STOCKDISPLAY)
-    #define LCD_PINS_RS     P1_22
+  #define BTN_EN1          P3_26   // (31) J3-2 & AUX-4
+  #define BTN_EN2          P3_25   // (33) J3-4 & AUX-4
+  #define SD_DETECT_PIN    P1_31   // (49) (NOT 5V tolerant)
 
-    #define BTN_EN1         P1_18
-    #define BTN_EN2         P1_20
+  #define LCD_SDSS         P0_16   // (16) J3-7 & AUX-4
 
-    #define LCD_PINS_ENABLE P1_23
-    #define LCD_PINS_D4     P1_21
+  #define LCD_PINS_ENABLE  P1_18  
+  #define LCD_PINS_D4      P1_20  
 
-  #else
-
-    #define LCD_PINS_RS     P1_19
-
-    #define BTN_EN1         P3_26   // (31) J3-2 & AUX-4
-    #define BTN_EN2         P3_25   // (33) J3-4 & AUX-4
-    #define SD_DETECT_PIN   P1_31   // (49) (NOT 5V tolerant)
-
-    #define LCD_SDSS        P0_16   // (16) J3-7 & AUX-4
-
-    #define LCD_PINS_ENABLE P1_18
-    #define LCD_PINS_D4     P1_20
-
-    #if ENABLED(ULTIPANEL)
-      #define LCD_PINS_D5   P1_21
-      #define LCD_PINS_D6   P1_22
-      #define LCD_PINS_D7   P1_23
-    #endif
-
+  #if ENABLED(ULTIPANEL)
+    #define LCD_PINS_D5    P1_21
+    #define LCD_PINS_D6    P1_22
+    #define LCD_PINS_D7    P1_23
   #endif
-
 #endif // ULTRA_LCD
+
+#if ENABLED(MKS_MINI_12864)
+
+  #define DOGLCD_CS    P1_21
+  #define DOGLCD_A0    P1_22
+
+  #define BTN_ENC          P0_28   // (58) open-drain
+  #define BTN_EN1          P3_26   // (31) J3-2 & AUX-4
+  #define BTN_EN2          P3_25   // (33) J3-4 & AUX-4
+
+  
+#endif // ENABLED(MKS_MINI_12864)
 
 //#define USB_SD_DISABLED
 #define USB_SD_ONBOARD        // Provide the onboard SD card to the host as a USB mass storage device
 
-#define LPC_SD_LCD            // Marlin uses the SD drive attached to the LCD
+//#define LPC_SD_LCD            // Marlin uses the SD drive attached to the LCD
 //#define LPC_SD_ONBOARD        // Marlin uses the SD drive on the control board
 
 #if ENABLED(LPC_SD_LCD)
