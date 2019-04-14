@@ -494,6 +494,10 @@ void GcodeSuite::process_parsed_command(
         case 666: M666(); break;                                  // M666: Set delta or dual endstop adjustment
       #endif
 
+      #if ENABLED(DELTA)
+        case 667: M667(); break;                                  // M667: Set delta diagonal rod trim
+      #endif
+
       #if ENABLED(FWRETRACT)
         case 207: M207(); break;                                  // M207: Set Retract Length, Feedrate, and Z lift
         case 208: M208(); break;                                  // M208: Set Recover (unretract) Additional Length and Feedrate

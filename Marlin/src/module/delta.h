@@ -32,7 +32,8 @@ extern float delta_height,
              delta_diagonal_rod,
              delta_segments_per_second,
              delta_calibration_radius,
-             delta_tower_angle_trim[ABC];
+             delta_tower_angle_trim[ABC],
+             delta_diagonal_rod_trim[ABC];
 
 extern float delta_tower[ABC][2],
              delta_diagonal_rod_2_tower[ABC],

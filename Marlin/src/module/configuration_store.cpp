@@ -197,7 +197,8 @@ typedef struct SettingsDataStruct {
           delta_diagonal_rod,                           // M665 L
           delta_segments_per_second,                    // M665 S
           delta_calibration_radius,                     // M665 B
-          delta_tower_angle_trim[ABC];                  // M665 XYZ
+          delta_tower_angle_trim[ABC],                  // M665 XYZ
+          delta_diagonal_rod_trim[ABC];                 // M667 XYZ
   #elif EITHER(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS) || Z_MULTI_ENDSTOPS
     float x2_endstop_adj,                               // M666 X
           y2_endstop_adj,                               // M666 Y
@@ -644,7 +645,7 @@ void MarlinSettings::postprocess() {
         EEPROM_WRITE(delta_segments_per_second); // 1 float
         EEPROM_WRITE(delta_calibration_radius);  // 1 float
         EEPROM_WRITE(delta_tower_angle_trim);    // 3 floats
-
+        EEPROM_WRITE(delta_diagonal_rod_trim);   // 3 floats
       #elif EITHER(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS) || Z_MULTI_ENDSTOPS
 
         _FIELD_TEST(x2_endstop_adj);
@@ -1360,7 +1361,7 @@ void MarlinSettings::postprocess() {
           EEPROM_READ(delta_segments_per_second); // 1 float
           EEPROM_READ(delta_calibration_radius);  // 1 float
           EEPROM_READ(delta_tower_angle_trim);    // 3 floats
-
+          EEPROM_READ(delta_diagonal_rod_trim);   // 3 floats
         #elif EITHER(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS) || Z_MULTI_ENDSTOPS
 
           _FIELD_TEST(x2_endstop_adj);
@@ -2078,7 +2079,7 @@ void MarlinSettings::reset() {
   //
 
   #if ENABLED(DELTA)
-    const float adj[ABC] = DELTA_ENDSTOP_ADJ, dta[ABC] = DELTA_TOWER_ANGLE_TRIM;
+    const float adj[ABC] = DELTA_ENDSTOP_ADJ, dta[ABC] = DELTA_TOWER_ANGLE_TRIM, drt[ABC] = DELTA_DIAGONAL_ROD_TRIM_TOWER;
     delta_height = DELTA_HEIGHT;
     COPY(delta_endstop_adj, adj);
     delta_radius = DELTA_RADIUS;
@@ -2086,6 +2087,7 @@ void MarlinSettings::reset() {
     delta_segments_per_second = DELTA_SEGMENTS_PER_SECOND;
     delta_calibration_radius = DELTA_CALIBRATION_RADIUS;
     COPY(delta_tower_angle_trim, dta);
+    COPY(delta_diagonal_rod_trim, drt);
 
   #elif EITHER(X_DUAL_ENDSTOPS, Y_DUAL_ENDSTOPS) || Z_MULTI_ENDSTOPS
 
@@ -2627,6 +2629,12 @@ void MarlinSettings::reset() {
       );
 
     #elif ENABLED(DELTA)
+
+      SERIAL_ECHOLNPAIR(
+          "  M667 X", LINEAR_UNIT(delta_diagonal_rod_trim[X_AXIS])
+        , " Y", LINEAR_UNIT(delta_diagonal_rod_trim[Y_AXIS])
+        , " Z", LINEAR_UNIT(delta_diagonal_rod_trim[Z_AXIS])
+      );
 
       CONFIG_ECHO_HEADING("Endstop adjustment:");
       CONFIG_ECHO_START();

@@ -105,6 +105,12 @@ void lcd_delta_settings() {
   EDIT_ANGLE_TRIM("Ty",B);
   EDIT_ANGLE_TRIM("Tz",C);
   MENU_ITEM_EDIT_CALLBACK(float52sign, MSG_DELTA_DIAG_ROD, &delta_diagonal_rod, delta_diagonal_rod - 5, delta_diagonal_rod + 5, _recalc_delta_settings);
+
+  #define EDIT_ROD_TRIM(LABEL,N) MENU_ITEM_EDIT_CALLBACK(float43, LABEL, &delta_diagonal_rod_trim[_AXIS(N)], -5, 5, _recalc_delta_settings)
+  EDIT_ROD_TRIM("Rx",A);
+  EDIT_ROD_TRIM("Ry",B);
+  EDIT_ROD_TRIM("Rz",C);
+
   END_MENU();
 }
 

@@ -777,6 +777,10 @@ private:
     static void M666();
   #endif
 
+  #if ENABLED(DELTA)
+    static void M667();
+  #endif
+
   #if ENABLED(FILAMENT_LOAD_UNLOAD_GCODES)
     static void M701();
     static void M702();

@@ -56,7 +56,8 @@ float delta_height,
       delta_diagonal_rod,
       delta_segments_per_second,
       delta_calibration_radius,
-      delta_tower_angle_trim[ABC];
+      delta_tower_angle_trim[ABC],
+      delta_diagonal_rod_trim[ABC];
 
 float delta_tower[ABC][2],
       delta_diagonal_rod_2_tower[ABC],
@@ -69,17 +70,17 @@ float delta_safe_distance_from_top();
  * settings have been changed (e.g., by M665).
  */
 void recalc_delta_settings() {
-  const float trt[ABC] = DELTA_RADIUS_TRIM_TOWER,
-              drt[ABC] = DELTA_DIAGONAL_ROD_TRIM_TOWER;
+  const float trt[ABC] = DELTA_RADIUS_TRIM_TOWER;
+              //drt[ABC] = DELTA_DIAGONAL_ROD_TRIM_TOWER;
   delta_tower[A_AXIS][X_AXIS] = cos(RADIANS(210 + delta_tower_angle_trim[A_AXIS])) * (delta_radius + trt[A_AXIS]); // front left tower
   delta_tower[A_AXIS][Y_AXIS] = sin(RADIANS(210 + delta_tower_angle_trim[A_AXIS])) * (delta_radius + trt[A_AXIS]);
   delta_tower[B_AXIS][X_AXIS] = cos(RADIANS(330 + delta_tower_angle_trim[B_AXIS])) * (delta_radius + trt[B_AXIS]); // front right tower
   delta_tower[B_AXIS][Y_AXIS] = sin(RADIANS(330 + delta_tower_angle_trim[B_AXIS])) * (delta_radius + trt[B_AXIS]);
   delta_tower[C_AXIS][X_AXIS] = cos(RADIANS( 90 + delta_tower_angle_trim[C_AXIS])) * (delta_radius + trt[C_AXIS]); // back middle tower
   delta_tower[C_AXIS][Y_AXIS] = sin(RADIANS( 90 + delta_tower_angle_trim[C_AXIS])) * (delta_radius + trt[C_AXIS]);
-  delta_diagonal_rod_2_tower[A_AXIS] = sq(delta_diagonal_rod + drt[A_AXIS]);
-  delta_diagonal_rod_2_tower[B_AXIS] = sq(delta_diagonal_rod + drt[B_AXIS]);
-  delta_diagonal_rod_2_tower[C_AXIS] = sq(delta_diagonal_rod + drt[C_AXIS]);
+  delta_diagonal_rod_2_tower[A_AXIS] = sq(delta_diagonal_rod + delta_diagonal_rod_trim[A_AXIS]);
+  delta_diagonal_rod_2_tower[B_AXIS] = sq(delta_diagonal_rod + delta_diagonal_rod_trim[B_AXIS]);
+  delta_diagonal_rod_2_tower[C_AXIS] = sq(delta_diagonal_rod + delta_diagonal_rod_trim[C_AXIS]);
   update_software_endstops(Z_AXIS);
   set_all_unhomed();
 }
