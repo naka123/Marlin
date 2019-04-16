@@ -329,10 +329,10 @@
     #define LCD_CONTRAST_MIN 0
   #endif
   #ifndef LCD_CONTRAST_MAX
-    #define LCD_CONTRAST_MAX 63
+    #define LCD_CONTRAST_MAX 128
   #endif
   #ifndef DEFAULT_LCD_CONTRAST
-    #define DEFAULT_LCD_CONTRAST 32
+    #define DEFAULT_LCD_CONTRAST 255
   #endif
 #endif
 
