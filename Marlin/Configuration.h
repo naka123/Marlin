@@ -746,7 +746,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
  
-#define DEFAULT_XYZ_STEPS_PER_UNIT 320
+#define DEFAULT_XYZ_STEPS_PER_UNIT 640
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, 1776 }
 
 /**
@@ -798,7 +798,7 @@
   #define DEFAULT_ZJERK 15.0
 #endif
 
-#define DEFAULT_EJERK    25.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    10.0  // May be used by Linear Advance
 
 /**
  * S-Curve Acceleration
