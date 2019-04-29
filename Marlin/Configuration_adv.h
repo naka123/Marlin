@@ -229,7 +229,7 @@
  */
 #define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  #define CONTROLLER_FAN_PIN P1_24        // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN 46        // Set a custom pin for the controller fan
   #define CONTROLLERFAN_SECS 15          // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255        // 255 == full speed
 #endif
@@ -295,7 +295,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN P2_03
+#define E0_AUTO_FAN_PIN 45
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -1178,7 +1178,7 @@
 #if ENABLED(SDSUPPORT)
   #define BLOCK_BUFFER_SIZE 16 // SD,LCD,Buttons take more memory, block buffer needs to be smaller
 #else
-  #define BLOCK_BUFFER_SIZE 64 // maximize block buffer
+  #define BLOCK_BUFFER_SIZE 16 // maximize block buffer
 #endif
 
 // @section serial
@@ -1479,7 +1479,7 @@
 
   #if AXIS_IS_TMC(X)
     #define X_CURRENT     700  // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_MICROSTEPS  128  // 0..256
+    #define X_MICROSTEPS  64  // 0..256
     #define X_RSENSE     0.11
   #endif
 
@@ -1491,7 +1491,7 @@
 
   #if AXIS_IS_TMC(Y)
     #define Y_CURRENT     700
-    #define Y_MICROSTEPS  128
+    #define Y_MICROSTEPS  64
     #define Y_RSENSE     0.11
   #endif
 
@@ -1503,7 +1503,7 @@
 
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT     700
-    #define Z_MICROSTEPS  128
+    #define Z_MICROSTEPS  64
     #define Z_RSENSE     0.11
   #endif
 
@@ -1521,7 +1521,7 @@
 
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT    350
-    #define E0_MICROSTEPS 64
+    #define E0_MICROSTEPS 32
     #define E0_RSENSE    0.11
   #endif
 

@@ -69,46 +69,75 @@
 //
 // Steppers
 //
-#define X_STEP_PIN         54
-#define X_DIR_PIN          55
-#define X_ENABLE_PIN       38
+//#define X_STEP_PIN         54
+//#define X_DIR_PIN          55
+//#define X_ENABLE_PIN       38
+//#ifndef X_CS_PIN
+//  #define X_CS_PIN         70
+//#endif
+//
+//#define Y_STEP_PIN         60
+//#define Y_DIR_PIN          61
+//#define Y_ENABLE_PIN       56
+//#ifndef Y_CS_PIN
+//  #define Y_CS_PIN         39
+//#endif
+
+//#define Z_STEP_PIN         43
+//#define Z_DIR_PIN          48
+//#define Z_ENABLE_PIN       58
+//#ifndef Z_CS_PIN
+//  #define Z_CS_PIN         74
+//#endif
+//
+//#define E0_STEP_PIN        26
+//#define E0_DIR_PIN         28
+//#define E0_ENABLE_PIN      24
+//#ifndef E0_CS_PIN
+//  #define E0_CS_PIN        47
+//#endif
+//
+//#define E1_STEP_PIN        36
+//#define E1_DIR_PIN         34
+//#define E1_ENABLE_PIN      30
+//#ifndef E1_CS_PIN
+//#define E1_CS_PIN        32
+//#endif
+//
+//#define E2_STEP_PIN        59
+//#define E2_DIR_PIN         57
+//#define E2_ENABLE_PIN      40
+//#ifndef E2_CS_PIN
+//#define E2_CS_PIN        42
+//#endif
+
+
+#define X_STEP_PIN         60
+#define X_DIR_PIN          61
+#define X_ENABLE_PIN       56
 #ifndef X_CS_PIN
-  #define X_CS_PIN         70
+  #define X_CS_PIN         39
 #endif
 
-#define Y_STEP_PIN         60
-#define Y_DIR_PIN          61
-#define Y_ENABLE_PIN       56
+#define Y_STEP_PIN        26
+#define Y_DIR_PIN         28
+#define Y_ENABLE_PIN      24
 #ifndef Y_CS_PIN
-  #define Y_CS_PIN         39
+  #define Y_CS_PIN        47
 #endif
 
-#define Z_STEP_PIN         43
-#define Z_DIR_PIN          48
-#define Z_ENABLE_PIN       58
+#define Z_STEP_PIN        36
+#define Z_DIR_PIN         34
+#define Z_ENABLE_PIN      30
 #ifndef Z_CS_PIN
-  #define Z_CS_PIN         74
+  #define Z_CS_PIN        32
 #endif
 
-#define E0_STEP_PIN        26
-#define E0_DIR_PIN         28
-#define E0_ENABLE_PIN      24
+#define E0_STEP_PIN        59
+#define E0_DIR_PIN         57
+#define E0_ENABLE_PIN      40
 #ifndef E0_CS_PIN
-  #define E0_CS_PIN        47
-#endif
-
-#define E1_STEP_PIN        36
-#define E1_DIR_PIN         34
-#define E1_ENABLE_PIN      30
-#ifndef E1_CS_PIN
-  #define E1_CS_PIN        32
-#endif
-
-#define E2_STEP_PIN        59
-#define E2_DIR_PIN         57
-#define E2_ENABLE_PIN      40
-#ifndef E2_CS_PIN
-  #define E2_CS_PIN        42
+  #define E0_CS_PIN        42
 #endif
 
 //
@@ -118,18 +147,23 @@
 
 #if HAS_DRIVER(TMC2208)
   // Software serial
-  #define X_SERIAL_RX_PIN  71
-  #define X_SERIAL_TX_PIN  72
-  #define Y_SERIAL_RX_PIN  73
-  #define Y_SERIAL_TX_PIN  75
-  #define Z_SERIAL_RX_PIN  78
-  #define Z_SERIAL_TX_PIN  79
-  #define E0_SERIAL_RX_PIN 76
-  #define E0_SERIAL_TX_PIN 77
-  #define E1_SERIAL_RX_PIN 80
-  #define E1_SERIAL_TX_PIN 81
-  #define E2_SERIAL_RX_PIN 22
-  #define E2_SERIAL_TX_PIN 82
+//  #define X_SERIAL_RX_PIN  71
+//  #define X_SERIAL_TX_PIN  72
+//  #define Y_SERIAL_RX_PIN  73
+//  #define Y_SERIAL_TX_PIN  75
+//  #define Z_SERIAL_RX_PIN  78
+//  #define Z_SERIAL_TX_PIN  79
+//  #define E0_SERIAL_RX_PIN 76
+//  #define E0_SERIAL_TX_PIN 77
+//  #define E1_SERIAL_RX_PIN 80
+//  #define E1_SERIAL_TX_PIN 81
+//  #define E2_SERIAL_RX_PIN 22
+//  #define E2_SERIAL_TX_PIN 82
+
+  #define X_SERIAL_RX_PIN  73
+  #define X_SERIAL_TX_PIN  75
+  #define Y_SERIAL_RX_PIN 76
+  #define Y_SERIAL_TX_PIN 77
 #endif
 
 //
@@ -153,8 +187,8 @@
 #define HEATER_BED_PIN      8
 
 #define FAN_PIN            44
-#define FAN1_PIN           45
-#define FAN2_PIN           46
+//#define FAN1_PIN           45
+//#define FAN2_PIN           46
 
 //
 // Misc. Functions
