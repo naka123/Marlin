@@ -26,7 +26,7 @@
 #define RST_BROWN_OUT  4
 #define RST_WATCHDOG   8
 
-#define WDT_TIMEOUT   4000000 // 4 second timeout
+#define WDT_TIMEOUT   20000000 // 20 second timeout
 
 void watchdog_init(void);
 void watchdog_reset(void);
