@@ -151,7 +151,7 @@
 #if EITHER(MAKRPANEL, MINIPANEL)
   #define DOGLCD
   #define ULTIPANEL
-  #define DEFAULT_LCD_CONTRAST 17
+  #define DEFAULT_LCD_CONTRAST 140
 #endif
 
 #if ENABLED(ULTI_CONTROLLER)
@@ -329,10 +329,10 @@
     #define LCD_CONTRAST_MIN 0
   #endif
   #ifndef LCD_CONTRAST_MAX
-    #define LCD_CONTRAST_MAX 128
+    #define LCD_CONTRAST_MAX 255
   #endif
   #ifndef DEFAULT_LCD_CONTRAST
-    #define DEFAULT_LCD_CONTRAST 255
+    #define DEFAULT_LCD_CONTRAST 128
   #endif
 #endif
 
