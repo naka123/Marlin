@@ -567,7 +567,7 @@
   // Make delta curves from many straight lines (linear interpolation).
   // This is a trade-off between visible corners (not enough segments)
   // and processor overload (too many expensive sqrt calls).
-  #define DELTA_SEGMENTS_PER_SECOND 250.0
+  #define DELTA_SEGMENTS_PER_SECOND 80.0
 
   // After homing move down to a height where XY movement is unconstrained
   //#define DELTA_HOME_TO_SAFE_ZONE
@@ -584,7 +584,7 @@
 
   #if ENABLED(DELTA_AUTO_CALIBRATION)
     // set the default number of probe points : n*n (1 -> 7)
-    #define DELTA_CALIBRATION_DEFAULT_POINTS 3
+    #define DELTA_CALIBRATION_DEFAULT_POINTS 1
   #endif
 
   #if ENABLED(DELTA_AUTO_CALIBRATION) || ENABLED(DELTA_CALIBRATION_MENU)
@@ -599,26 +599,26 @@
   #define DELTA_PRINTABLE_RADIUS 195.0     // (mm)
 
   // Center-to-center distance of the holes in the diagonal push rods.
-  #define DELTA_DIAGONAL_ROD 551.0        // (mm)
+  #define DELTA_DIAGONAL_ROD 559.43        // (mm)
 
   // Distance between bed and nozzle Z home position
-  #define DELTA_HEIGHT 236.0             // (mm) Get this value from G33 auto calibrate
+  #define DELTA_HEIGHT 275.0             // (mm) Get this value from G33 auto calibrate
 
-  #define DELTA_ENDSTOP_ADJ { 0.161, 0.406, -0.264 } // Get these values from G33 auto calibrate
+  #define DELTA_ENDSTOP_ADJ { 0.0, 0.0, 0.0 } // Get these values from G33 auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
-  #define DELTA_RADIUS 211.128              // (mm) Get this value from G33 auto calibrate
+  #define DELTA_RADIUS 223.83              // (mm) Get this value from G33 auto calibrate
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
   // measured in degrees anticlockwise looking from above the printer
-  #define DELTA_TOWER_ANGLE_TRIM { -0.160, 0.048, 0.0 } // Get these values from G33 auto calibrate
+  #define DELTA_TOWER_ANGLE_TRIM { 0.0, 0.0, 0.0 } // Get these values from G33 auto calibrate
 
   // Delta radius and diagonal rod adjustments (mm)
   //#define DELTA_RADIUS_TRIM_TOWER { 0.0, 0.0, 0.0 }
 
-  //#define DELTA_DIAGONAL_ROD_TRIM_TOWER { 0.0, 0.0, 0.0 }
-    #define DELTA_DIAGONAL_ROD_TRIM_TOWER { -0.523, -6.89, -4.064 }
+  #define DELTA_DIAGONAL_ROD_TRIM_TOWER { 0.0, 0.0, 0.0 }
+  //  #define DELTA_DIAGONAL_ROD_TRIM_TOWER { -0.523, -6.89, -4.064 }
 
 #endif
 
@@ -762,7 +762,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 3000, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 2000, 10000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -772,16 +772,16 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          1600    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1600    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1600    // X, Y, Z acceleration for travel (non printing) moves
 
 //
 // Use Junction Deviation instead of traditional Jerk Limiting
 //
 //#define JUNCTION_DEVIATION
 #if ENABLED(JUNCTION_DEVIATION)
-  #define JUNCTION_DEVIATION_MM 0.02  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.05  // (mm) Distance from real junction edge
 #endif
 
 /**
@@ -793,12 +793,12 @@
  * value set here, it may happen instantaneously.
  */
 #if DISABLED(JUNCTION_DEVIATION)
-  #define DEFAULT_XJERK 15.0
-  #define DEFAULT_YJERK 15.0
-  #define DEFAULT_ZJERK 15.0
+  #define DEFAULT_XJERK 6.0
+  #define DEFAULT_YJERK 6.0
+  #define DEFAULT_ZJERK 6.0
 #endif
 
-#define DEFAULT_EJERK    10.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    12.0  // May be used by Linear Advance
 
 /**
  * S-Curve Acceleration
