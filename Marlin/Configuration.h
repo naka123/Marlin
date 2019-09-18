@@ -587,7 +587,7 @@
   // Make delta curves from many straight lines (linear interpolation).
   // This is a trade-off between visible corners (not enough segments)
   // and processor overload (too many expensive sqrt calls).
-  #define DELTA_SEGMENTS_PER_SECOND 80.0
+  #define DELTA_SEGMENTS_PER_SECOND 160.0
 
   // After homing move down to a height where XY movement is unconstrained
   //#define DELTA_HOME_TO_SAFE_ZONE
@@ -767,7 +767,7 @@
  */
  
 #define DEFAULT_XYZ_STEPS_PER_UNIT 640
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, 1776 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, 1536 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -819,9 +819,9 @@
  * value set here, it may happen instantaneously.
  */
 #if DISABLED(JUNCTION_DEVIATION)
-  #define DEFAULT_XJERK 6.0
-  #define DEFAULT_YJERK 6.0
-  #define DEFAULT_ZJERK 6.0
+  #define DEFAULT_XJERK 2.0
+  #define DEFAULT_YJERK 2.0
+  #define DEFAULT_ZJERK 2.0
 #endif
 
 #define DEFAULT_EJERK    12.0  // May be used by Linear Advance
