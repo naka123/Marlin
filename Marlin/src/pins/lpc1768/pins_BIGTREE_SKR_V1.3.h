@@ -246,9 +246,7 @@
 
     #endif // !FYSETC_MINI_12864
 
-  #define BTN_ENC          P0_28   // (58) open-drain
-  #define BTN_EN1          P3_26   // (31) J3-2 & AUX-4
-  #define BTN_EN2          P3_25   // (33) J3-4 & AUX-4
+  #endif // !CR10_STOCKDISPLAY
 
 #endif // HAS_SPI_LCD
 
