@@ -551,9 +551,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Ultimaker
-  #define DEFAULT_Kp 22.2
-  #define DEFAULT_Ki 1.08
-  #define DEFAULT_Kd 114
+  //#define DEFAULT_Kp 22.2
+  //#define DEFAULT_Ki 1.08
+  //#define DEFAULT_Kd 114
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
@@ -564,6 +564,11 @@
   //#define DEFAULT_Kp 63.0
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
+
+  // E3D V6 24V
+  #define DEFAULT_Kp 24.38
+  #define DEFAULT_Ki 2.08
+  #define DEFAULT_Kd 71.52
 
 #endif // PIDTEMP
 
@@ -584,7 +589,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -602,9 +607,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  //#define DEFAULT_bedKp 10.00
+  //#define DEFAULT_bedKi .023
+  //#define DEFAULT_bedKd 305.4
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -613,6 +618,10 @@
   //#define DEFAULT_bedKd 1675.16
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
+  #define DEFAULT_bedKp 28.47
+  #define DEFAULT_bedKi 1.34
+  #define DEFAULT_bedKd 0.0
+
 #endif // PIDTEMPBED
 
 #if EITHER(PIDTEMP, PIDTEMPBED)
@@ -2220,7 +2229,7 @@
 // However, control resolution will be halved for each increment;
 // at zero value, there are 128 effective control positions.
 // :[0,1,2,3,4,5,6,7]
-#define SOFT_PWM_SCALE 0
+#define SOFT_PWM_SCALE 2
 
 // If SOFT_PWM_SCALE is set to a value higher than 0, dithering can
 // be used to mitigate the associated resolution loss. If enabled,

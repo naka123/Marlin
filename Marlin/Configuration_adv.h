@@ -204,7 +204,7 @@
  * Thermal Protection parameters for the heated chamber.
  */
 #if ENABLED(THERMAL_PROTECTION_CHAMBER)
-  #define THERMAL_PROTECTION_CHAMBER_PERIOD    20 // Seconds
+  #define THERMAL_PROTECTION_CHAMBER_PERIOD    30 // Seconds
   #define THERMAL_PROTECTION_CHAMBER_HYSTERESIS 2 // Degrees Celsius
 
   /**
