@@ -23,7 +23,10 @@
 
 #define BOARD_INFO_NAME "BTT SKR V1.3"
 
-//
+// EEPROM
+//#define FLASH_EEPROM_EMULATION
+#define SDCARD_EEPROM_EMULATION
+
 // Trinamic Stallguard pins
 //
 #define X_DIAG_PIN                         P1_29  // X-
