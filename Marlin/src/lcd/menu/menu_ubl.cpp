@@ -51,13 +51,15 @@ float mesh_edit_value, mesh_edit_accumulator; // We round mesh_edit_value to 2.5
                                               // separate value that doesn't lose precision.
 static int16_t ubl_encoderPosition = 0;
 
+#define MESH_EDITOR_INCREMENT 0.05f
+
 static void _lcd_mesh_fine_tune(PGM_P const msg) {
   ui.defer_status_screen();
   if (ubl.encoder_diff) {
     ubl_encoderPosition = (ubl.encoder_diff > 0) ? 1 : -1;
     ubl.encoder_diff = 0;
 
-    mesh_edit_accumulator += float(ubl_encoderPosition) * 0.005f * 0.5f;
+    mesh_edit_accumulator += float(ubl_encoderPosition) * MESH_EDITOR_INCREMENT * 0.5f;
     mesh_edit_value = mesh_edit_accumulator;
     ui.encoderPosition = 0;
     ui.refresh(LCDVIEW_CALL_REDRAW_NEXT);
