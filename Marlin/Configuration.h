@@ -104,12 +104,12 @@
   #define DELTA_DIAGONAL_ROD 556.00        // (mm)
 
   // Distance between bed and nozzle Z home position
-  #define DELTA_HEIGHT 168.51             // (mm) Get this value from G33 auto calibrate
+  #define DELTA_HEIGHT 172.97             // (mm) Get this value from G33 auto calibrate
 
-  #define DELTA_ENDSTOP_ADJ { 0.0, -1.13, -0.04 } // Get these values from G33 auto calibrate
+  #define DELTA_ENDSTOP_ADJ { 0.0, -0.40, -1.52 } // Get these values from G33 auto calibrate
 
   // Horizontal distance bridged by diagonal push rods when effector is centered.
-  #define DELTA_RADIUS 222.57              // (mm) Get this value from G33 auto calibrate
+  #define DELTA_RADIUS 222.05              // (mm) Get this value from G33 auto calibrate
 
   // Trim adjustments for individual towers
   // tower angle corrections for X and Y tower / rotate XYZ so Z tower angle = 0
