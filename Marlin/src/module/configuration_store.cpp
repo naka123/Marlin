@@ -1407,6 +1407,12 @@ void MarlinSettings::postprocess() {
         EEPROM_READ(planner.settings.min_feedrate_mm_s);
         EEPROM_READ(planner.settings.min_travel_feedrate_mm_s);
 
+        #if ENABLED(LASER_POWER_INLINE)
+            EEPROM_READ(planner.settings.laser);
+            short dummyh_align = 0;
+            EEPROM_READ(dummyh_align);
+        #endif
+
         #if HAS_CLASSIC_JERK
           EEPROM_READ(planner.max_jerk);
           #if HAS_LINEAR_E_JERK
