@@ -2776,15 +2776,15 @@
  * See https://marlinfw.org/docs/configuration/laser_spindle.html for more config details.
  */
 //#define SPINDLE_FEATURE
-//#define LASER_FEATURE
+#define LASER_FEATURE
 #if EITHER(SPINDLE_FEATURE, LASER_FEATURE)
 
-  #define SPINDLE_LASER_ENA_PIN P2_03
-  #define SPINDLE_LASER_PWM_PIN P1_26
+  #define SPINDLE_LASER_ENA_PIN P1_26
+  #define SPINDLE_LASER_PWM_PIN P2_03
 
   #define SPINDLE_LASER_ACTIVE_HIGH     true  // Set to "true" if the on/off function is active HIGH
   #define SPINDLE_LASER_PWM             true   // Set to "true" if your controller supports setting the speed/power
-  #define SPINDLE_LASER_PWM_INVERT      false   // Set to "true" if the speed/power goes up when you want it to go slower
+  #define SPINDLE_LASER_PWM_INVERT      true   // Set to "true" if the speed/power goes up when you want it to go slower
 
   #define SPINDLE_LASER_FREQUENCY       2500   // (Hz) Spindle/laser frequency (only on supported HALs: AVR and LPC)
 
@@ -2829,7 +2829,7 @@
     #define SPEED_POWER_INTERCEPT         0
     #define SPEED_POWER_MIN               0
     #define SPEED_POWER_MAX             100    // 0-100%
-    #define SPEED_POWER_STARTUP          80    // The default value for speed power when M3 is called without arguments
+    #define SPEED_POWER_STARTUP           1    // The default value for speed power when M3 is called without arguments
 
     /**
      * Enable inline laser power to be handled in the planner / stepper routines.
@@ -2867,7 +2867,7 @@
        * can't keep up with the processing demands of LASER_POWER_INLINE_TRAPEZOID_CONT.
        * Disable (or set to 0) to recalculate power on every stepper iteration.
        */
-      #define LASER_POWER_INLINE_TRAPEZOID_CONT_PER 10
+      #define LASER_POWER_INLINE_TRAPEZOID_CONT_PER 50
 
       /**
        * Include laser power in G0/G1/G2/G3/G5 commands with the 'S' parameter
@@ -2898,8 +2898,8 @@
 
     #else
 
-      #define SPINDLE_LASER_POWERUP_DELAY     50 // (ms) Delay to allow the spindle/laser to come up to speed/power
-      #define SPINDLE_LASER_POWERDOWN_DELAY   50 // (ms) Delay to allow the spindle to stop
+      #define SPINDLE_LASER_POWERUP_DELAY     0 // (ms) Delay to allow the spindle/laser to come up to speed/power
+      #define SPINDLE_LASER_POWERDOWN_DELAY   0 // (ms) Delay to allow the spindle to stop
 
     #endif
   #endif
