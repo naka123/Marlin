@@ -2148,7 +2148,7 @@
   #define INTERPOLATE       false  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       950        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       1600        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     128    // 0..256
     #define X_RSENSE          0.11
@@ -2164,7 +2164,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       950
+    #define Y_CURRENT       1600
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     128
     #define Y_RSENSE          0.11
@@ -2180,7 +2180,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT       950
+    #define Z_CURRENT       1600
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     128
     #define Z_RSENSE          0.11
@@ -2867,7 +2867,7 @@
        * can't keep up with the processing demands of LASER_POWER_INLINE_TRAPEZOID_CONT.
        * Disable (or set to 0) to recalculate power on every stepper iteration.
        */
-      #define LASER_POWER_INLINE_TRAPEZOID_CONT_PER 50
+      #define LASER_POWER_INLINE_TRAPEZOID_CONT_PER 5
 
       /**
        * Include laser power in G0/G1/G2/G3/G5 commands with the 'S' parameter
@@ -2877,7 +2877,7 @@
       #if ENABLED(LASER_MOVE_POWER)
         // Turn off the laser on G0 moves with no power parameter.
         // If a power parameter is provided, use that instead.
-        #define LASER_MOVE_G0_OFF
+        //#define LASER_MOVE_G0_OFF
       #endif
 
       /**
@@ -3070,27 +3070,27 @@
 /**
  * User-defined menu items that execute custom GCode
  */
-//#define CUSTOM_USER_MENUS
+#define CUSTOM_USER_MENUS
 #if ENABLED(CUSTOM_USER_MENUS)
   //#define CUSTOM_USER_MENU_TITLE "Custom Commands"
   #define USER_SCRIPT_DONE "M117 User Script Done"
-  #define USER_SCRIPT_AUDIBLE_FEEDBACK
+  //#define USER_SCRIPT_AUDIBLE_FEEDBACK
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
-  #define USER_DESC_1 "Home & UBL Info"
-  #define USER_GCODE_1 "G28\nG29 W"
+  #define USER_DESC_1 "Unload (200mm)"
+  #define USER_GCODE_1 "G91\nG1 E-200 F300\nG90"
 
-  #define USER_DESC_2 "Preheat for " PREHEAT_1_LABEL
-  #define USER_GCODE_2 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
+  #define USER_DESC_2 "Load (200mm)"
+  #define USER_GCODE_2 "G91\nG1 E200 F300\nG90"
 
-  #define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
-  #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
+//  #define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
+//  #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
-  #define USER_DESC_4 "Heat Bed/Home/Level"
-  #define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
+//  #define USER_DESC_4 "Heat Bed/Home/Level"
+//  #define USER_GCODE_4 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
 
-  #define USER_DESC_5 "Home & Info"
-  #define USER_GCODE_5 "G28\nM503"
+//  #define USER_DESC_5 "Home & Info"
+//  #define USER_GCODE_5 "G28\nM503"
 #endif
 
 /**
