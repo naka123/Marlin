@@ -2849,7 +2849,7 @@
        * - Ramps the power up every N steps to approximate the speed trapezoid.
        * - Due to the limited power resolution this is only approximate.
        */
-      #define LASER_POWER_INLINE_TRAPEZOID
+       #define LASER_POWER_INLINE_TRAPEZOID
 
       /**
        * Continuously calculate the current power (nominal_power * current_rate / nominal_rate).
@@ -2867,13 +2867,12 @@
        * can't keep up with the processing demands of LASER_POWER_INLINE_TRAPEZOID_CONT.
        * Disable (or set to 0) to recalculate power on every stepper iteration.
        */
-      #define LASER_POWER_INLINE_TRAPEZOID_CONT_PER 5
+      #define LASER_POWER_INLINE_TRAPEZOID_CONT_PER 0
 
       /**
        * Include laser power in G0/G1/G2/G3/G5 commands with the 'S' parameter
        */
-      #define LASER_MOVE_POWER
-
+      //#define LASER_MOVE_POWER
       #if ENABLED(LASER_MOVE_POWER)
         // Turn off the laser on G0 moves with no power parameter.
         // If a power parameter is provided, use that instead.
@@ -2886,7 +2885,7 @@
        * WARNING: M5 will NOT turn off the laser unless another move
        *          is done (so G-code files must end with 'M5 I').
        */
-      //#define LASER_POWER_INLINE_INVERT
+      #define LASER_POWER_INLINE_INVERT
 
       /**
        * Continuously apply inline power. ('M3 S3' == 'G1 S3' == 'M3 S3 I')
@@ -2894,7 +2893,7 @@
        * The laser might do some weird things, so only enable this
        * feature if you understand the implications.
        */
-      //#define LASER_POWER_INLINE_CONTINUOUS
+      #define LASER_POWER_INLINE_CONTINUOUS
 
     #else
 
