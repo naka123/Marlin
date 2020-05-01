@@ -116,8 +116,12 @@ void GcodeSuite::M3_M4(const bool is_M4) {
 void GcodeSuite::M5() {
   #if ENABLED(LASER_POWER_INLINE)
     if (parser.seen('I') == DISABLED(LASER_POWER_INLINE_INVERT)) {
-      cutter.inline_enabled(false); // Laser power in inline mode
-      return;
+        #if ENABLED(SPINDLE_LASER_PWM)
+            cutter.inline_power(0);
+        #else
+            cutter.inline_enabled(false); // Laser power in inline mode
+        #endif
+        return;
     }
     // Non-inline, standard case
     cutter.inline_disable(); // Prevent future blocks re-setting the power
