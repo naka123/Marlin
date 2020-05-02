@@ -601,7 +601,7 @@
 // LASER / SPINDLE
 #if !STATUS_CUTTER_WIDTH && HAS_CUTTER
   #define STATUS_CUTTER_WIDTH 24
-  #define STATUS_CUTTER_X 80
+  #define STATUS_CUTTER_X 42
   #if ENABLED(LASER_FEATURE)
     #ifdef STATUS_CUTTER_ANIM
       const unsigned char status_cutter_on_bmp[] PROGMEM = {
@@ -1615,7 +1615,7 @@
   #endif
 
   #ifndef STATUS_CUTTER_Y
-    #define STATUS_CUTTER_Y(S) 4
+    #define STATUS_CUTTER_Y(S) 7
   #endif
 
   #ifndef STATUS_CUTTER_TEXT_X
@@ -1764,7 +1764,7 @@
 #if HAS_HEATED_BED && HOTENDS <= 4
   #define DO_DRAW_BED 1
 #endif
-#if HAS_CUTTER && !DO_DRAW_BED
+#if HAS_CUTTER
   #define DO_DRAW_CUTTER 1
 #endif
 #if HAS_TEMP_CHAMBER && STATUS_CHAMBER_WIDTH && HOTENDS <= 4
