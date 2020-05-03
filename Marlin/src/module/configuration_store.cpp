@@ -1408,9 +1408,11 @@ void MarlinSettings::postprocess() {
         EEPROM_READ(planner.settings.min_travel_feedrate_mm_s);
 
         #if ENABLED(LASER_POWER_INLINE)
-            EEPROM_READ(planner.settings.laser);
-            short dummyh_align = 0;
-            EEPROM_READ(dummyh_align);
+            EEPROM_READ(planner.settings.laser.status);
+            EEPROM_READ(planner.settings.laser.power);
+            EEPROM_READ(planner.settings.laser.min_power);
+            uint8_t dummy_align = 0;
+            EEPROM_READ(dummy_align);
         #endif
 
         #if HAS_CLASSIC_JERK
@@ -2659,6 +2661,10 @@ void MarlinSettings::reset() {
     }
   #endif
 
+  #if LASER_INLINE_POWER
+    planner.settings.laser.min_power = LASER_POWER_INLINE_TRAPEZOID_CONT_MIN_POWER;
+  #endif
+
   postprocess();
 
   DEBUG_ECHO_START();
@@ -2831,12 +2837,13 @@ void MarlinSettings::reset() {
       }
     #endif
 
-    CONFIG_ECHO_HEADING("Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>");
+    CONFIG_ECHO_HEADING("Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel> L<laser_min_power>");
     CONFIG_ECHO_START();
     SERIAL_ECHOLNPAIR_P(
         PSTR("  M204 P"), LINEAR_UNIT(planner.settings.acceleration)
       , PSTR(" R"), LINEAR_UNIT(planner.settings.retract_acceleration)
       , SP_T_STR, LINEAR_UNIT(planner.settings.travel_acceleration)
+      , PSTR(" L"), planner.settings.laser.min_power
     );
 
     CONFIG_ECHO_HEADING(

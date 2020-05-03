@@ -248,6 +248,12 @@ typedef struct block_t {
      * as it avoids floating points during move loop
      */
     uint8_t power;
+
+    /*
+     * Minimal laser power for INLINE_TRAPEZOID_CONT
+     */
+    uint8_t min_power;
+
   } settings_laser_t;
 #endif
 

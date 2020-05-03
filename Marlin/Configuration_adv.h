@@ -2862,6 +2862,8 @@
        */
       #define LASER_POWER_INLINE_TRAPEZOID_CONT
 
+      #define LASER_POWER_INLINE_TRAPEZOID_CONT_MIN_POWER 2 // pwm255
+
       /**
        * Stepper iterations between power updates. Increase this value if the board
        * can't keep up with the processing demands of LASER_POWER_INLINE_TRAPEZOID_CONT.

@@ -98,10 +98,11 @@ void GcodeSuite::M203() {
  *    T = Travel (non printing) moves
  */
 void GcodeSuite::M204() {
-  if (!parser.seen("PRST")) {
+  if (!parser.seen("PRSTL")) {
     SERIAL_ECHOPAIR("Acceleration: P", planner.settings.acceleration);
     SERIAL_ECHOPAIR(" R", planner.settings.retract_acceleration);
-    SERIAL_ECHOLNPAIR_P(SP_T_STR, planner.settings.travel_acceleration);
+    SERIAL_ECHOPAIR_P(SP_T_STR, planner.settings.travel_acceleration);
+    SERIAL_ECHOLNPAIR(" L", planner.settings.laser.min_power);
   }
   else {
     //planner.synchronize();
@@ -110,6 +111,8 @@ void GcodeSuite::M204() {
     if (parser.seenval('P')) planner.settings.acceleration = parser.value_linear_units();
     if (parser.seenval('R')) planner.settings.retract_acceleration = parser.value_linear_units();
     if (parser.seenval('T')) planner.settings.travel_acceleration = parser.value_linear_units();
+    // HACK - ну не место ему в ускорении
+    if (parser.seenval('L')) planner.settings.laser.min_power = parser.value_int();
   }
 }
 
