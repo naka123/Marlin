@@ -1780,7 +1780,7 @@
   #define BLOCK_BUFFER_SIZE 16
 #endif
 */
-#define BLOCK_BUFFER_SIZE 64
+#define BLOCK_BUFFER_SIZE 32 // 64 похоже производительность проца у LPC1768 чутка не хватает для своевременной обработки
 
 // @section serial
 
