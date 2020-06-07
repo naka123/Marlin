@@ -3079,10 +3079,10 @@
   //#define USER_SCRIPT_RETURN  // Return to status screen after a script
 
   #define USER_DESC_1 "Unload (200mm)"
-  #define USER_GCODE_1 "G91\nG1 E-200 F300\nG90"
+  #define USER_GCODE_1 "G91\nG1 E-50 F300\nG1 E-150 F600\nG90"
 
   #define USER_DESC_2 "Load (200mm)"
-  #define USER_GCODE_2 "G91\nG1 E200 F300\nG90"
+  #define USER_GCODE_2 "G91\nG1 E150 F600\nG1 E50 F300\nG90"
 
 //  #define USER_DESC_3 "Preheat for " PREHEAT_2_LABEL
 //  #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
